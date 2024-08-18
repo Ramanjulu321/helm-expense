@@ -1,28 +1,13 @@
-kind: Deployment
-apiVersion: apps/v1
+---
+apiVersion: v1
+kind: Service
 metadata:
-  name: mysql
-  namespace: expense
-  # these labels are deployment related labels
-  labels:
-    component: mysql
-    project: expense
-    tier: db
+  name: nginx
 spec:
-  replicas: {{ .Values.deployment.replicas }}
   selector:
-    matchLabels:
-      component: mysql
-      project: expense
-      tier: db
-  # pod definition
-  template:
-    metadata:
-      labels:
-        component: mysql
-        project: expense
-        tier: db
-    spec:
-      containers:
-      - name: mysql
-        image: ramudevops321/mysql:{{ .Values.deployment.imageVersion }}
+    app: nginx
+    purpose: helm
+  ports:
+  - protocol: TCP
+    port: 80 #service-port
+    targetPort: {{ .Vallues.configmap.port }} #target-port
