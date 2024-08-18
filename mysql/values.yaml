@@ -3,3 +3,5 @@ configmap:
 deployment:
   replicas: 2
   imageVersion: latest
+sesrvice:
+  nodePort: 32134
