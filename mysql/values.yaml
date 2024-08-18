@@ -3,5 +3,5 @@ configmap:
 deployment:
   replicas: 2
   imageVersion: stable-perl
-sesrvice:
+service:
   nodePort: 32134
